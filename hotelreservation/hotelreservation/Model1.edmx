@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="availablity">
+          <Key>
+            <PropertyRef Name="availablityid" />
+          </Key>
+          <Property Name="availablityid" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="roomid" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="roomsavailable" Type="int" />
+          <Property Name="dateofavailablity" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="bookingid" />
+          </Key>
+          <Property Name="bookingid" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="roomid" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="roomno" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="passportno" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="datecheckin" Type="date" Nullable="false" />
+          <Property Name="datecheckout" Type="date" Nullable="false" />
+          <Property Name="noofpeople" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="passsword" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roomfacility">
+          <Key>
+            <PropertyRef Name="roomid" />
+          </Key>
+          <Property Name="roomid" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="roomrent" Type="int" Nullable="false" />
+          <Property Name="roomsavailable" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userdetails">
+          <Key>
+            <PropertyRef Name="passportno" />
+          </Key>
+          <Property Name="userid" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="passportno" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email/phoneno" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__availabli__roomi__4316F928">
+          <End Role="roomfacility" Type="Self.roomfacility" Multiplicity="1" />
+          <End Role="availablity" Type="Self.availablity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomfacility">
+              <PropertyRef Name="roomid" />
+            </Principal>
+            <Dependent Role="availablity">
+              <PropertyRef Name="roomid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__roomid__4CA06362">
+          <End Role="roomfacility" Type="Self.roomfacility" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomfacility">
+              <PropertyRef Name="roomid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="roomid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userdetai__useri__38996AB5">
+          <End Role="login" Type="Self.login" Multiplicity="1" />
+          <End Role="userdetails" Type="Self.userdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="userdetails">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelReservationModelStoreContainer">
+          <EntitySet Name="availablity" EntityType="Self.availablity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roomfacility" EntityType="Self.roomfacility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userdetails" EntityType="Self.userdetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__availabli__roomi__4316F928" Association="Self.FK__availabli__roomi__4316F928">
+            <End Role="roomfacility" EntitySet="roomfacility" />
+            <End Role="availablity" EntitySet="availablity" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__roomid__4CA06362" Association="Self.FK__booking__roomid__4CA06362">
+            <End Role="roomfacility" EntitySet="roomfacility" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userdetai__useri__38996AB5" Association="Self.FK__userdetai__useri__38996AB5">
+            <End Role="login" EntitySet="login" />
+            <End Role="userdetails" EntitySet="userdetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="availablity">
+          <Key>
+            <PropertyRef Name="availablityid" />
+          </Key>
+          <Property Name="availablityid" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomid" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomsavailable" Type="Int32" />
+          <Property Name="dateofavailablity" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="roomfacility" Relationship="Self.FK__availabli__roomi__4316F928" FromRole="availablity" ToRole="roomfacility" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="bookingid" />
+          </Key>
+          <Property Name="bookingid" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomid" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomno" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passportno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datecheckin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="datecheckout" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="noofpeople" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="roomfacility" Relationship="Self.FK__booking__roomid__4CA06362" FromRole="booking" ToRole="roomfacility" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passsword" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="userdetails" Relationship="Self.FK__userdetai__useri__38996AB5" FromRole="login" ToRole="userdetails" />
+        </EntityType>
+        <EntityType Name="roomfacility">
+          <Key>
+            <PropertyRef Name="roomid" />
+          </Key>
+          <Property Name="roomid" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomrent" Type="Int32" Nullable="false" />
+          <Property Name="roomsavailable" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="availablities" Relationship="Self.FK__availabli__roomi__4316F928" FromRole="roomfacility" ToRole="availablity" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__roomid__4CA06362" FromRole="roomfacility" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="userdetail">
+          <Key>
+            <PropertyRef Name="passportno" />
+          </Key>
+          <Property Name="userid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passportno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_phoneno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="login" Relationship="Self.FK__userdetai__useri__38996AB5" FromRole="userdetails" ToRole="login" />
+        </EntityType>
+        <Association Name="FK__availabli__roomi__4316F928">
+          <End Role="roomfacility" Type="Self.roomfacility" Multiplicity="1" />
+          <End Role="availablity" Type="Self.availablity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomfacility">
+              <PropertyRef Name="roomid" />
+            </Principal>
+            <Dependent Role="availablity">
+              <PropertyRef Name="roomid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__roomid__4CA06362">
+          <End Role="roomfacility" Type="Self.roomfacility" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomfacility">
+              <PropertyRef Name="roomid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="roomid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userdetai__useri__38996AB5">
+          <End Role="login" Type="Self.login" Multiplicity="1" />
+          <End Role="userdetails" Type="Self.userdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="userdetails">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelReservationEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="availablities" EntityType="Self.availablity" />
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="logins" EntityType="Self.login" />
+          <EntitySet Name="roomfacilities" EntityType="Self.roomfacility" />
+          <EntitySet Name="userdetails" EntityType="Self.userdetail" />
+          <AssociationSet Name="FK__availabli__roomi__4316F928" Association="Self.FK__availabli__roomi__4316F928">
+            <End Role="roomfacility" EntitySet="roomfacilities" />
+            <End Role="availablity" EntitySet="availablities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__roomid__4CA06362" Association="Self.FK__booking__roomid__4CA06362">
+            <End Role="roomfacility" EntitySet="roomfacilities" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userdetai__useri__38996AB5" Association="Self.FK__userdetai__useri__38996AB5">
+            <End Role="login" EntitySet="logins" />
+            <End Role="userdetails" EntitySet="userdetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelReservationModelStoreContainer" CdmEntityContainer="HotelReservationEntities3">
+          <EntitySetMapping Name="availablities">
+            <EntityTypeMapping TypeName="HotelReservationModel.availablity">
+              <MappingFragment StoreEntitySet="availablity">
+                <ScalarProperty Name="availablityid" ColumnName="availablityid" />
+                <ScalarProperty Name="roomid" ColumnName="roomid" />
+                <ScalarProperty Name="roomsavailable" ColumnName="roomsavailable" />
+                <ScalarProperty Name="dateofavailablity" ColumnName="dateofavailablity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="HotelReservationModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+                <ScalarProperty Name="roomid" ColumnName="roomid" />
+                <ScalarProperty Name="roomno" ColumnName="roomno" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="passportno" ColumnName="passportno" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="datecheckin" ColumnName="datecheckin" />
+                <ScalarProperty Name="datecheckout" ColumnName="datecheckout" />
+                <ScalarProperty Name="noofpeople" ColumnName="noofpeople" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="HotelReservationModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="passsword" ColumnName="passsword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roomfacilities">
+            <EntityTypeMapping TypeName="HotelReservationModel.roomfacility">
+              <MappingFragment StoreEntitySet="roomfacility">
+                <ScalarProperty Name="roomid" ColumnName="roomid" />
+                <ScalarProperty Name="roomrent" ColumnName="roomrent" />
+                <ScalarProperty Name="roomsavailable" ColumnName="roomsavailable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userdetails">
+            <EntityTypeMapping TypeName="HotelReservationModel.userdetail">
+              <MappingFragment StoreEntitySet="userdetails">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="passportno" ColumnName="passportno" />
+                <ScalarProperty Name="email_phoneno" ColumnName="email/phoneno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

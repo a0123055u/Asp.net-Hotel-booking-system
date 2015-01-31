@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="hotelreservation.Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+   <link rel="stylesheet" href="../Content/Style.css" type="text/css" />
+       
+    <style type="text/css">
+        .auto-style2 {
+            width: 143px;
+        }
+        .auto-style6 {
+            width: 161px;
+        }
+        .auto-style7 {
+            width: 108px;
+        }
+        .auto-style8 {
+            width: 75px;
+        }
+        .auto-style9 {
+            width: 114px;
+        }
+        .auto-style10 {
+            height: 27px;
+        }
+        .auto-style11 {
+            width: 121px;
+        }
+        .auto-style12 {
+            width: 105px;
+        }
+        .auto-style13 {
+            width: 151px;
+        }
+    </style>
+   
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+        <table <%--style="align-content:center" class="auto-style1"--%>  width="800" border="0" cellpadding="0" align="center"> 
+            <tr>
+                <td>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/images/mas.jpg" Width="1259px" Height="253px" style="margin-right: 0px" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style10">
+                    
+                    <table >
+                        <tr>
+                            <td class="auto-style8">
+                                <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" PostBackUrl="~/Home.aspx" CausesValidation="False">HOME</asp:LinkButton>
+                            </td>
+                            <td class="auto-style7">
+                                <asp:LinkButton ID="LinkButton2" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" PostBackUrl="~/Search.aspx" CausesValidation="False">BOOKING</asp:LinkButton>
+                            </td>
+                            <td class="auto-style6">
+                                <asp:LinkButton ID="LinkButton3" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" CausesValidation="False" PostBackUrl="~/Rooms.aspx">ROOMS & SUITES</asp:LinkButton>
+                            </td>
+                            <td class="auto-style2">
+                                <asp:LinkButton ID="LinkButton5" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" CausesValidation="False" PostBackUrl="~/Food.aspx">FOOD & DINING</asp:LinkButton>
+                            </td>
+                            <td class="auto-style9">
+                                <asp:LinkButton ID="LinkButton6" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" CausesValidation="False" PostBackUrl="~/Facilities.aspx">FACILITIES</asp:LinkButton>
+                            </td>
+                            <td class="auto-style12">
+                                <asp:LinkButton ID="LinkButton7" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" CausesValidation="False" PostBackUrl="~/Location.aspx">LOCATION</asp:LinkButton>
+                            </td>
+                            <td class="auto-style13">
+                                <asp:LinkButton ID="LinkButton8" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Black" CausesValidation="False" PostBackUrl="~/ContactUs.aspx">CONTACT US</asp:LinkButton>
+                            </td>
+                           
+                            <td class="auto-style11">
+                                <asp:Label ID="welcome" runat="server" Text="Welcome Guest !"></asp:Label>
+                        </tr>
+                    </table>
+                    
+                </td>
+            </tr>
+
+            
+            <tr>
+                <td>
+                    <p>
+                    </p>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </td>
+            </tr>
+         
+        </table>
+
+        
+    </div>
+    </form>
+    <p>
+    </p>
+</body>
+</html>

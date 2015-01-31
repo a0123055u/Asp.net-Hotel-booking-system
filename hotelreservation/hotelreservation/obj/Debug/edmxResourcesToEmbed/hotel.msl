@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelReservationModelStoreContainer" CdmEntityContainer="HotelReservationEntities1">
+    <EntitySetMapping Name="availablities">
+      <EntityTypeMapping TypeName="HotelReservationModel.availablity">
+        <MappingFragment StoreEntitySet="availablity">
+          <ScalarProperty Name="availablityid" ColumnName="availablityid" />
+          <ScalarProperty Name="roomid" ColumnName="roomid" />
+          <ScalarProperty Name="roomsavailable" ColumnName="roomsavailable" />
+          <ScalarProperty Name="dateofavailablity" ColumnName="dateofavailablity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="HotelReservationModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+          <ScalarProperty Name="roomid" ColumnName="roomid" />
+          <ScalarProperty Name="roomno" ColumnName="roomno" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="passportno" ColumnName="passportno" />
+          <ScalarProperty Name="email_phoneno" ColumnName="email/phoneno" />
+          <ScalarProperty Name="datecheckin" ColumnName="datecheckin" />
+          <ScalarProperty Name="datecheckout" ColumnName="datecheckout" />
+          <ScalarProperty Name="noofpeople" ColumnName="noofpeople" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="HotelReservationModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="passsword" ColumnName="passsword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roomfacilities">
+      <EntityTypeMapping TypeName="HotelReservationModel.roomfacility">
+        <MappingFragment StoreEntitySet="roomfacility">
+          <ScalarProperty Name="roomid" ColumnName="roomid" />
+          <ScalarProperty Name="roomrent" ColumnName="roomrent" />
+          <ScalarProperty Name="roomsavailable" ColumnName="roomsavailable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userdetails">
+      <EntityTypeMapping TypeName="HotelReservationModel.userdetail">
+        <MappingFragment StoreEntitySet="userdetails">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="passportno" ColumnName="passportno" />
+          <ScalarProperty Name="email_phoneno" ColumnName="email/phoneno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
